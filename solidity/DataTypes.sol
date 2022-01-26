@@ -40,7 +40,7 @@ contract DataTypes {
     Byte represent a sequence of bytes. There are two type of bytes types :
         fixed-sized byte arrays
         dynamically-sized byte arrays.
-     
+
     The term bytes represents a dynamic array of bytes.  It’s a shorthand
     for byte[].
     */
