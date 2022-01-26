@@ -12,7 +12,7 @@ class Solution:
         # Empty lsit scenario
         if head == None:
             return None
-        
+
         # Initializing heads and current pointers
         odd_current = head
         even_head = head.next
