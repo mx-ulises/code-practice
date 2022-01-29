@@ -17,11 +17,11 @@ class Solution:
         odd_current = head
         even_head = head.next
         even_current = even_head
-        
+
         # pick first node to analyze
         current = even_current
         is_odd = True
-        
+
         # Check until we arrive to the end of the list
         while current != None:
             current = current.next
@@ -33,6 +33,6 @@ class Solution:
                 is_odd = True
                 even_current.next = current
                 even_current = even_current.next
-        
+
         odd_current.next = even_head
         return head
