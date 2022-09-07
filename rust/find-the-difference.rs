@@ -27,4 +27,18 @@ impl Solution {
         // Default scenario with zero
         '0'
     }
+
+    fn get_char_sum(s: String) -> u32 {
+        let mut sum:u32 = 0;
+        for c in s.chars() {
+            sum += &c.into();
+        }
+        return sum
+    }
+
+    pub fn find_the_difference_2(s: String, t: String) -> char {
+        let s_sum:u32 = Solution::get_char_sum(s);
+        let t_sum:u32 = Solution::get_char_sum(t);
+        return (t_sum - s_sum).try_into().unwrap()
+    }
 }
