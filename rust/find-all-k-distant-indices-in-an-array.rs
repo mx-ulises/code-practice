@@ -5,8 +5,7 @@ impl Solution {
         let mut output:Vec<i32> = Vec::new();
         let mut min:i32 = 0;
         let max:i32 = nums.len() as i32;
-        let mut i:i32 = 0;
-        while i < max {
+        for i in 0..max {
             if nums[i as usize] == key {
                 let start:i32 = cmp::max(min, i - k);
                 let end:i32 = cmp::min(max, i + k + 1);
@@ -14,8 +13,7 @@ impl Solution {
                     output.push(j);
                 }
                 min = end;
-            } 
-            i += 1;
+            }
         }
         output
     }
