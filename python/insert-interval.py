@@ -1,15 +1,6 @@
 class Solution:
-
     def merge(interval_1, interval_2):
-        return (
-                    min(interval_1[0], interval_2[0]),
-                    max(interval_1[1], interval_2[1])
-                )
-
-    def lt(interval_1, interval_2):
-        if interval_1[1] < interval_2[0]:
-            return True
-        return False
+        return (min(interval_1[0], interval_2[0]), max(interval_1[1], interval_2[1]))
 
     def mergable(interval_1, interval_2):
         if interval_1[0] <= interval_2[0] and interval_2[0] <= interval_1[1]:
@@ -18,37 +9,20 @@ class Solution:
             return True
         return False
 
-    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+    def insert(self, intervals: List[List[int]], new_interval: List[int]) -> List[List[int]]:
         new_intervals = []
-        added = False
-        if len(intervals) != 0:
-            interval = intervals.pop(0)
-            if Solution.mergable(interval, newInterval):
-                merged_interval = Solution.merge(interval, newInterval)
-                new_intervals.append(merged_interval)
-                added = True
-            elif Solution.lt(newInterval, interval):
-                new_intervals.append(newInterval)
-                new_intervals.append(interval)
-                added = True
-            else:
-                new_intervals.append(interval)
-
-        while intervals:
-            interval = intervals.pop(0)
-            if Solution.mergable(interval, new_intervals[-1]):
-                new_intervals[-1] = Solution.merge(interval, new_intervals[-1])
-            elif not added and Solution.mergable(interval, newInterval):
-                merged_interval = merged_interval = Solution.merge(interval, newInterval)
-                new_intervals.append(merged_interval)
-                added = True
-            elif not added and Solution.lt(newInterval, interval):
-                new_intervals.append(newInterval)
-                new_intervals.append(interval)
-                added = True
-            else:
-                new_intervals.append(interval)
-
-        if not added:
-            new_intervals.append(newInterval)
+        i = 0
+        while i < len(intervals) and intervals[i][1] < new_interval[0]:
+            new_intervals.append(intervals[i])
+            i += 1
+        if new_intervals and Solution.mergable(new_intervals[-1], new_interval):
+            new_intervals[-1] = Solution.merge(new_intervals[-1], new_interval)
+        else:
+            new_intervals.append(new_interval)
+        while i < len(intervals) and Solution.mergable(new_intervals[-1], intervals[i]):
+            new_intervals[-1] = Solution.merge(new_intervals[-1], intervals[i])
+            i += 1
+        while i < len(intervals):
+            new_intervals.append(intervals[i])
+            i += 1
         return new_intervals
