@@ -1,16 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-contract Enum {
-    // Definition of an enum and the values it can have.
-    enum Status {
-        Pending,
-        Shipped,
-        Accepted,
-        Rejected,
-        Canceled
-    }
+// Importing Enum
+import "./libs/StatusEnum.sol";
 
+contract Enum {
     // Default value is the first element listed in the definition.
     Status public status;
 
