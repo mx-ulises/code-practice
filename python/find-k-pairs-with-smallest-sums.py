@@ -1,5 +1,5 @@
 class Solution:
-    def add_array_to_heap(nums1: List[int], nums2: List[int]) -> List[List[int]]:
+    def add_array_to_heap(nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
         h = []
         pairs = []
         for i in range(len(nums1)):
