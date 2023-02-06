@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-contract FunctionModifier {
+contract FunctionModifierOne {
     uint public total_tokens = 1000;
     uint public constant LOWER_LIMIT = 100;
 
