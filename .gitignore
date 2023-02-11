@@ -134,3 +134,6 @@ dmypy.json
 # The library shouldn't decide about the exact versions of
 # its dependencies, but let the downstream crate decide.
 Cargo.lock
+
+# Tandom DS_Store file
+.DS_Store
