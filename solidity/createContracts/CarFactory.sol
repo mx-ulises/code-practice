@@ -19,4 +19,23 @@ contract CarFactory {
         Car car = cars[_index];
         return(car.owner(), car.model(), car.carAddr(), address(car).balance);
     }
+
+    function createAndSendEther(address _owner, string memory _model) public payable {
+        Car car = (new Car){value: msg.value}(_owner, _model);
+        cars.push(car);
+    }
+
+    function create2(address _owner, string memory _model, bytes32 _salt) public {
+        Car car = (new Car){salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
+
+    function create2AndSendEther(
+        address _owner,
+        string memory _model,
+        bytes32 _salt
+    ) public payable {
+        Car car = (new Car){value: msg.value, salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
 }
