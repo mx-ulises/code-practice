@@ -20,4 +20,19 @@ contract TryCatch {
             emit Log("External call failed");
         }
     }
+
+    function tryCatchNewContract(address _owner, uint _x) public {
+        try new RemoteContract(_owner) returns (RemoteContract remoteContract) {
+            // you can use variable foo here
+            remoteContract.myFunc(_x);
+            emit Log("RemoteContract created");
+        } catch Error(string memory reason) {
+            // catch failing revert() and require()
+            emit Log(reason);
+        } catch (bytes memory reason) {
+            // catch failing assert()
+            emit LogBytes(reason);
+        }
+    }
+
 }
