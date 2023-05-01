@@ -1,13 +1,13 @@
 DIVISORS = [3, 5, 7]
 
 class Solution:
-    def is_excluded(x: int, divisors: list[int], divisor_i: int) -> bool:
+    def is_excluded(x: int, divisors: List[int], divisor_i: int) -> bool:
         for i in range(divisor_i):
             if x % divisors[i] == 0:
                 return True
         return False
 
-    def add_integers(n: int, divisors: list[int], divisor_i: int) -> int:
+    def add_integers(n: int, divisors: List[int], divisor_i: int) -> int:
         sum_of_multiples = 0
         current = 0
         divisor = divisors[divisor_i]
