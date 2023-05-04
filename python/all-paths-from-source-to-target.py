@@ -10,14 +10,6 @@ class Solution:
                 current_path.pop()
 
 
-    def solution_1(graph: List[List[int]]) -> List[List[int]]:
-        solutions = []
-        current_path = [0]
-        target = len(graph) - 1
-        Solution.get_paths(graph, current_path, solutions, target)
-        return solutions
-
-
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         solutions = []
         current_path = [0]
