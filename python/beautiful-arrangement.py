@@ -2,9 +2,7 @@ class Solution:
     def is_valid_placement(perm_i, i, perm):
         if perm[i]:
             return False
-        if perm_i % i == 0 or i % perm_i == 0:
-            return True
-        return False
+        return perm_i % i == 0 or i % perm_i == 0
 
     def build_beautiful_permutation(perm_i, perm):
         if len(perm) == perm_i:
